@@ -1,0 +1,2 @@
+・UnityでEditorの補完機能が働かないときはEditー＞Preferences-＞External Tools－＞External Script Editor　の設定をみななおしてみる
+・AndoroidStudioの環境設定は　https://qiita.com/StrayDog/items/5ba0cbc00606eb8a0d46　ここ見てscoopでinstallする。

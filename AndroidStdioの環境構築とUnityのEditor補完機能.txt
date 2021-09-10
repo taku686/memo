@@ -1,2 +1,37 @@
 ・UnityでEditorの補完機能が働かないときはEditー＞Preferences-＞External Tools－＞External Script Editor　の設定をみななおしてみる
+
 ・AndoroidStudioの環境設定は　https://qiita.com/StrayDog/items/5ba0cbc00606eb8a0d46　ここ見てscoopでinstallする。
+
+<MVCmodelで思ったこと>
+・Modelであたゆる関数を作り
+・Viewは各イにスタンス化するためのobjectに持たせるため各キャラやオブジェクトのパラメーターなどを持たせる
+・Controllerでは各キャラクターの状態やゲームシーンなどの進行状態（他クラスへの関数の受け渡しなど）を確認しながらmodelにある関数を実行する
+
+＜Enumの引数の取り方＞
+using System;
+using UnityEngine;
+
+public class Example : MonoBehaviour
+{
+    private enum Type
+    {
+        GRASS,
+        FIRE,
+        WATER,
+    }
+
+    private void Update()
+    {
+        Hoge2( Type.FIRE );
+    }
+
+    private void Hoge2<T>( T value ) where T : Enum
+    {
+    }
+}
+Generic 制約 で Enum を指定するとGC Alloc発生しない
+
+
+＜引数のあるActionやFuncを使うときの注意＞
+・引数に入れる値はActionやFuncの呼び出し先で値を入れるためActionやfuncを他のクラスで変数に代入する際は
+そのクラス内で引数に値を入れることができない。

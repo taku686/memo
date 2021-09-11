@@ -1,0 +1,25 @@
+<Playerの画面内に移動を制限する方法>
+ public void Move()
+    {
+
+        float xVelocity = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        float zVelocity = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        //Debug.Log("xVelocity" + xVelocity);
+        transform.position += new Vector3(xVelocity, 0, zVelocity);
+        if (transform.position.x > topRight.x )
+        {
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeft.x, topRight.x), 0, transform.position.z);
+        }
+        if(transform.position.x < bottomLeft.x)
+        {
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeft.x, topRight.x), 0, transform.position.z);
+        }
+        if (transform.position.z > topRight.z)
+        {
+            transform.position = new Vector3(transform.position.x, 0, Mathf.Clamp(transform.position.z, bottomLeft.z, topRight.z));
+        }
+        if (transform.position.z < bottomLeft.z)
+        {
+            transform.position = new Vector3(transform.position.x, 0, Mathf.Clamp(transform.position.z, bottomLeft.z, topRight.z));
+        }
+    }
